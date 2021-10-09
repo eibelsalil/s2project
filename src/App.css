@@ -88,14 +88,14 @@ a{
   flex-grow: 1;
   justify-content: space-around;
 }
-#header-img{
+/* #header-img{
 
   background-size: contain;
   width: 100px;
   background-repeat: no-repeat;
-  background-image: url('doge-img.png');
+  background-image: url('favicon.jpg');
 
-}
+} */
 .main-section{ 
   display: flex;
   flex-direction: column;
@@ -287,7 +287,7 @@ a{
   width: 100%;
   background-position: 0px;
   background-repeat: no-repeat;
-  background-image: url('main-sample.jpg');
+  background-image: url('main-sample.png');
 }
 
 
@@ -572,7 +572,7 @@ flex-shrink: 1.2;
   width: 100%;
   background-position: 0px;
   background-repeat: no-repeat;
-  background-image: url('doge-img.png');
+  background-image: url('merch.png');
 
 }
 
@@ -766,7 +766,8 @@ flex-shrink: 1.2;
     zoom:1.5;
     background-size: contain;
     height: 250px;
-    padding-left: 15vw;
+    position: relative;
+    left:5vw;
   }
   .bodysection-container-1{
     flex-direction: column-reverse;
