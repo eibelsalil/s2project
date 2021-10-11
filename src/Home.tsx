@@ -13,6 +13,7 @@ import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
 
 
+
 import {
   CandyMachine,
   awaitTransactionSignatureConfirmation,
@@ -28,6 +29,8 @@ const CounterText = styled.span``; // add your styles here
 const MintContainer = styled.div``; // add your styles here
 
 const MintButton = styled(Button)``; // add your styles here
+
+const addresses = ["9JS5p5o6k61JEQU4txqdLWpDzE98BL8Cm9vY4ovFLgVa"];
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
@@ -59,6 +62,10 @@ const Home = (props: HomeProps) => {
 
   const onMint = async () => {
     try {
+
+
+
+
       setIsMinting(true);
       if (wallet && candyMachine?.program) {
         const mintTxId = await mintOneToken(
@@ -75,6 +82,7 @@ const Home = (props: HomeProps) => {
           "singleGossip",
           false
         );
+
 
         if (!status?.err) {
           setAlertState({
@@ -213,7 +221,8 @@ Solana Doge Business is a collection of 5000 cute 25x25 pixel art collection on 
 <MintContainer className="mint-btn disabled" style={{
     alignSelf: "center"}}>
         {!wallet ? (
-          <ConnectButton id="connect-mint" style={{color:"#666666",background:"#cccccc",fontSize: "1.1rem",fontStyle: "italic",
+          <ConnectButton id="connect-mint" style={{ color: "#666666",
+            background:"#cccccc",fontSize: "1.1rem",fontStyle: "italic",
             lineHeight: "1",
             fontFamily: "Montserrat,sans-serif",marginRight:"5vw"}}>Mint SDB</ConnectButton>
         ) : (
@@ -275,7 +284,7 @@ Solana Doge Business is a collection of 5000 cute 25x25 pixel art collection on 
 
 <div className="bodysection-container-2" style={{background:"#fed300",paddingBottom: "10vw"}}>
 
-  <div className="body-image-container-2" style={{width:"-webkit-fill-available"}}>
+  <div className="body-image-container-2">
   <div className="body-image-2"></div>
   <div></div>
   </div>
