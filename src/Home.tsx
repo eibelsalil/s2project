@@ -22,6 +22,63 @@ import {
   shortenAddress,
 } from "./candy-machine";
 
+
+
+import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, set , onValue} from "firebase/database";
+import { truncate } from "fs";
+
+// Set the configuration for your app
+// TODO: Replace with your project's config object
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyC7fnlaZ5HHrnBrIjMbR0y3jICuoRseB0A",
+  authDomain: "solana-dbs.firebaseapp.com",
+  projectID: "solana-dbs",
+  // For databases not in the us-central1 location, databaseURL will be of the
+  // form https://[databaseName].[region].firebasedatabase.app.
+  // For example, https://your-database-123.europe-west1.firebasedatabase.app
+  databaseURL: "https://solana-dbs-default-rtdb.asia-southeast1.firebasedatabase.app",
+  storageBucket: "solana-dbs.appspot.com"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+// Get a reference to the database service
+const db = getDatabase(app);
+
+
+async function readUserData(wallet:any) {
+const readCountRef = ref(db, wallet);
+let count
+onValue(readCountRef, (snapshot) => {
+  count = snapshot.val();
+});
+return count;
+}
+
+async function checkCount(count:any) {
+
+
+if(count.count<3){
+  return true;
+}
+else{
+  return false;
+}
+  
+}
+
+function writeUserData(wallet:any,count:any) {
+  console.log(wallet)
+  set(ref(db, wallet), {
+    count: count,
+  });
+}
+
+
 const ConnectButton = styled(WalletDialogButton)``;
 
 const CounterText = styled.span``; // add your styles here
@@ -30,7 +87,6 @@ const MintContainer = styled.div``; // add your styles here
 
 const MintButton = styled(Button)``; // add your styles here
 
-const addresses = ["9JS5p5o6k61JEQU4txqdLWpDzE98BL8Cm9vY4ovFLgVa"];
 
 export interface HomeProps {
   candyMachineId: anchor.web3.PublicKey;
@@ -60,10 +116,13 @@ const Home = (props: HomeProps) => {
   const wallet = useAnchorWallet();
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
 
+
   const onMint = async () => {
     try {
 
 
+    if (await checkCount(await readUserData(wallet?.publicKey.toString()))) {
+    
 
 
       setIsMinting(true);
@@ -85,12 +144,20 @@ const Home = (props: HomeProps) => {
 
 
         if (!status?.err) {
+
+
           setAlertState({
             open: true,
             message: "Congratulations! Mint succeeded!",
             severity: "success",
-          });
-        } else {
+          }); 
+      
+      }
+    }
+      
+      
+      else {
+
           setAlertState({
             open: true,
             message: "Mint failed! Please try again!",
@@ -99,6 +166,9 @@ const Home = (props: HomeProps) => {
         }
       }
     } catch (error: any) {
+
+console.log(error);
+
       // TODO: blech:
       let message = error.msg || "Minting failed! Please try again!";
       if (!error.msg) {
