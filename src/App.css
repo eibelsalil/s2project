@@ -379,6 +379,7 @@ a{
 
 .body-image-container-2{
 
+  width: -webkit-fill-available;
   background-color: inherit;
   
   
