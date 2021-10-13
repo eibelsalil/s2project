@@ -277,8 +277,8 @@ Solana Doge Business is a collection of 5000 cute 25x25 pixel art collection on 
     fontFamily: "Montserrat,sans-serif",padding: "10px"}}>Join Discord</Button>
 
 <div className="main-heading" style={{color:"black",fontSize: "1.5rem",paddingTop:"5vw",paddingBottom:"1vw"}}>Price: 1 SOL</div>
-<div className="main-heading" style={{color:"black",fontSize: "1.5rem",paddingTop:"1vw",paddingBottom:"1vw"}}>Presale: 14th Oct</div>
-<div className="main-heading" style={{color:"black",fontSize: "1.5rem",paddingTop:"1vw"}}>Public Mint: 16th Oct</div>
+<div className="main-heading" style={{color:"black",fontSize: "1.5rem",paddingTop:"1vw",paddingBottom:"1vw"}}>Presale: 18th Oct</div>
+<div className="main-heading" style={{color:"black",fontSize: "1.5rem",paddingTop:"1vw"}}>Public Mint: 20th Oct</div>
 
 </div>
 
