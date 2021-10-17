@@ -12,6 +12,9 @@ import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
 
+import ReCAPTCHA from "react-google-recaptcha";
+
+
 
 
 import {
@@ -25,24 +28,28 @@ import {
 
 
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set , onValue} from "firebase/database";
-import { truncate } from "fs";
+import { getDatabase, ref, set , onValue, get} from "firebase/database";
 
 // Set the configuration for your app
 // TODO: Replace with your project's config object
 
+
 const firebaseConfig = {
 
-  apiKey: "AIzaSyC7fnlaZ5HHrnBrIjMbR0y3jICuoRseB0A",
-  authDomain: "solana-dbs.firebaseapp.com",
-  projectID: "solana-dbs",
+  apiKey: process.env.REACT_APP_FB_API,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectID: process.env.REACT_APP_PROJECT_ID,
   // For databases not in the us-central1 location, databaseURL will be of the
   // form https://[databaseName].[region].firebasedatabase.app.
   // For example, https://your-database-123.europe-west1.firebasedatabase.app
-  databaseURL: "https://solana-dbs-default-rtdb.asia-southeast1.firebasedatabase.app",
-  storageBucket: "solana-dbs.appspot.com"
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET
 
 };
+
+
+
+
 
 const app = initializeApp(firebaseConfig);
 
@@ -59,10 +66,23 @@ onValue(readCountRef, (snapshot) => {
 return count;
 }
 
+async function walletExist(wallet:any) {
+  const readCountRef = ref(db, wallet);
+  let count
+  await onValue(readCountRef, (snapshot) => {
+    if(snapshot.exists())
+      count=true;
+    else
+      count=false;
+  });
+return count
+}
+
+
 async function checkCount(count:any) {
 
 
-if(count.count<3){
+if(count<1){
   return true;
 }
 else{
@@ -72,12 +92,12 @@ else{
 }
 
 function writeUserData(wallet:any,count:any) {
-  console.log(wallet)
-  set(ref(db, wallet), {
-    count: count,
-  });
+  console.log(count);
+  set(ref(db, wallet), count+1);
 }
 
+
+ 
 
 const ConnectButton = styled(WalletDialogButton)``;
 
@@ -104,6 +124,8 @@ const Home = (props: HomeProps) => {
   const [isMinting, setIsMinting] = useState(false); // true when user got to press MINT
   const [itemsAvailable, setitemsAvailable] = useState<number>();
   const [itemsRemaining, setitemsRemaining] = useState<number>();
+  const [captchaDone, setcaptchaDone] = useState(false);
+
 
   const [alertState, setAlertState] = useState<AlertState>({
     open: false,
@@ -113,17 +135,31 @@ const Home = (props: HomeProps) => {
 
   const [startDate, setStartDate] = useState(new Date(props.startDate));
 
+
   const wallet = useAnchorWallet();
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
 
 
+  function onChange(value:any) {
+
+    setcaptchaDone(true);
+    console.log("Captcha value:", value);
+  }
+   
+
+
   const onMint = async () => {
+
     try {
+ 
+    console.log(await walletExist(wallet?.publicKey.toString()));
 
+    console.log((await get(ref(db, wallet?.publicKey.toString()))).exists());
 
+    if(captchaDone){
+    if(await walletExist(wallet?.publicKey.toString())){  
     if (await checkCount(await readUserData(wallet?.publicKey.toString()))) {
     
-
 
       setIsMinting(true);
       if (wallet && candyMachine?.program) {
@@ -145,6 +181,8 @@ const Home = (props: HomeProps) => {
 
         if (!status?.err) {
 
+          writeUserData(wallet?.publicKey.toString(),await readUserData(wallet?.publicKey.toString()));
+
 
           setAlertState({
             open: true,
@@ -165,6 +203,38 @@ const Home = (props: HomeProps) => {
           });
         }
       }
+      else{
+
+        setAlertState({
+          open: true,
+          message: "You don't have anymore presale mints left",
+          severity: "error",
+        });
+
+      }
+    }
+    else{
+
+      
+
+      setAlertState({
+        open: true,
+        message: "Your address isn't whitelisted for presale",
+        severity: "error",
+      });
+
+    }
+  }
+  else{
+
+    setAlertState({
+      open: true,
+      message: "Please complete captcha to mint",
+      severity: "error",
+    });
+
+  }
+
     } catch (error: any) {
 
 console.log(error);
@@ -234,7 +304,6 @@ console.log(error);
     <div style={{ height: "-webkit-fill-available",
     backgroundColor:"rgb(17,24,39)"}}>
     <div className="header">
-
       <div id="sname"></div>
        <div id="right-menu">
         <div id="menu-li"><a href="/#roadmap">ROADMAP</a></div>
@@ -246,8 +315,7 @@ console.log(error);
          lineHeight: "1",
          fontFamily: "Montserrat,sans-serif"}}>CONNECT WALLET</ConnectButton>
           ) : (<span>{wallet && ( <div style={{fontSize:"1rem"}}>Address: {shortenAddress(wallet.publicKey.toBase58() || "")}</div>)}</span>)}
-        </MintContainer>
-        <div className="hamburger"></div> 
+        </MintContainer> 
        </div>
 
     </div>
@@ -266,56 +334,65 @@ console.log(error);
 Welcome Woofers !!
 </h1>
 <p className="main-subheading">
-Solana Doge Business is a collection of 5000 cute 25x25 pixel art collection on the Solana Blockchain. Holding a SDB grants membership to the Woof Club and owner exclusive perks. Monkeys and Apes have been having fun for too long so we have decided to join them. Woof!
+Solana Doge Business is a collection of 5000 cute 2x24 pixel art collection on the Solana Blockchain. Holding a Doge Capital grants membership to the Woof Club and owner exclusive perks. Monkeys and Apes have been having fun for too long so we have decided to join them. Woof!
 </p>
 
-<Button id="twitter" href="https://twitter.com/SolanaDBS" style={{background:"black",marginTop:"10px",marginBottom:"10px",marginRight:"10px",marginLeft:"10px",fontSize: "1.1rem",color:"white",fontStyle: "italic",
+<Button id="twitter" href="https://twitter.com/thedogecapital" style={{background:"black",marginTop:"10px",marginBottom:"10px",marginRight:"10px",marginLeft:"10px",fontSize: "1.1rem",color:"white",fontStyle: "italic",
     lineHeight: "1",
     fontFamily: "Montserrat,sans-serif",padding: "10px"}}>Follow on Twitter</Button>
 <Button id="discord" href="https://discord.gg/xZEvbqFerb" style={{background:"black",margin:"10px",fontSize: "1.1rem",color:"white",fontStyle: "italic",
     lineHeight: "1",
     fontFamily: "Montserrat,sans-serif",padding: "10px"}}>Join Discord</Button>
 
-<div className="main-heading" style={{color:"black",fontSize: "1.5rem",paddingTop:"5vw",paddingBottom:"1vw"}}>Price: 1 SOL</div>
+<div className="main-heading" style={{color:"black",fontSize: "1.5rem",paddingTop:"6vw",paddingBottom:"1vw"}}>Price: 1 SOL</div>
 <div className="main-heading" style={{color:"black",fontSize: "1.5rem",paddingTop:"1vw",paddingBottom:"1vw"}}>Presale: 18th Oct</div>
 <div className="main-heading" style={{color:"black",fontSize: "1.5rem",paddingTop:"1vw"}}>Public Mint: 20th Oct</div>
 
 </div>
 
 
-<div className="mint-container" style={{justifyContent:"space-around",marginTop:"2vw"}}>
+<div className="mint-container" style={{justifyContent:"space-around",marginTop:"7vw"}}>
 
 {wallet && (
         <div style={{display:"flex",flexDirection:"column"}}>
         <div className="mint-heading">Mint Price : 1 SOL</div>  
-        <div className="mint-heading" style={{fontSize:"1rem",alignSelf:"center",marginTop:"30px"}}>Items Available: {itemsRemaining} / {itemsAvailable}</div>
+        <div className="mint-heading" style={{fontSize:"1rem",alignSelf:"center",marginTop:"5vw",marginBottom:"5vw"}}>Items Available: {itemsRemaining} / {itemsAvailable}</div>
         </div>
       )}
 
-
-
 <MintContainer className="mint-btn disabled" style={{
-    alignSelf: "center"}}>
+    alignSelf: "center",display:"grid"}}>
+  
+  <ReCAPTCHA
+    sitekey={process.env.REACT_APP_CAPTCHA_KEY!}
+    onChange={onChange}
+  />
+
         {!wallet ? (
-          <ConnectButton id="connect-mint" style={{ color: "#666666",
-            background:"#cccccc",fontSize: "1.1rem",fontStyle: "italic",
+          <ConnectButton id="connect-mint" style={{ color: "white",
+            background:"black",fontSize: "1.1rem",fontStyle: "italic",
             lineHeight: "1",
-            fontFamily: "Montserrat,sans-serif",marginRight:"5vw"}}>Mint SDB</ConnectButton>
+            fontFamily: "Montserrat,sans-serif",marginRight:"5vw",marginLeft:"7vw"}}>Connect Wallet</ConnectButton>
         ) : (
+         
           <MintButton
-            disabled={isSoldOut || isMinting || !isActive}
-            onClick={onMint}
+          onClick={onMint}
+          disabled={isSoldOut || isMinting || !isActive}
             variant="contained"
           style={{fontStyle: "italic",
             lineHeight: "1",
-            fontFamily: "Montserrat,sans-serif",background:"black",color:"white"}}>
+            fontFamily: "Montserrat,sans-serif",background:"black",color:"white",marginTop:"2vw"}}>
+
+
             {isSoldOut ? (
               "SOLD OUT"
             ) : isActive ? (
               isMinting ? (
                 <CircularProgress />
               ) : (
-                "MINT"
+                <div style={{width:"inherit"}}>
+                MINT
+                </div>
               )
             ) : (
               <Countdown
@@ -327,6 +404,7 @@ Solana Doge Business is a collection of 5000 cute 25x25 pixel art collection on 
             )}
           </MintButton>
         )}
+
       </MintContainer>
 
    
@@ -378,12 +456,12 @@ Solana Doge Business is a collection of 5000 cute 25x25 pixel art collection on 
 
   <div className="body-container-royalty">
   <div className="main-heading">Royalties</div>
-  <div className="body-subheading" style={{paddingBottom:"10vw"}}>Our unique royalty system will allow hodlers to earn higher royalties on holding for longer periods of time. Also holding other NFTs like a SMB or Thugbird will allow you to earn more royalties, this incentivizes SMB, Thugbirds NFT holders to ape into SDB.
+  <div className="body-subheading" style={{paddingBottom:"10vw"}}>Our unique royalty system will allow hodlers to earn higher royalties on holding for longer periods of time. Also holding other NFTs like a SMB or Thugbird will allow you to earn more royalties, this incentivizes SMB, Thugbirds NFT holders to ape into Doge Capital.
 <br/><br/>
 Given below is the percentage wise split of how the royalties collected from the secondary sales will be used :
 <br/>
 <br/>
-30% - Base royalty to all SDB holders
+30% - Base royalty to all Doge Capital holders
 <br/>
 <br/>
 10% - Pool for rewarding SMB/Thugbirds Holders
@@ -448,12 +526,12 @@ We’ve set up some goalposts for ourselves. Once we hit a target sell through p
 
   <div className="r-p-container">
     <div className="r-percentage" style={{paddingLeft:"15px",paddingRight:"25px"}}>20%</div>
-    <div className="r-text">We release the Chained Dogs - 10 Doges will be randomly airdropped to SDB holders</div>
+    <div className="r-text">We release the Chained Dogs - 10 Doges will be randomly airdropped to Doge Capital holders</div>
   </div>
 
   <div className="r-p-container">
     <div className="r-percentage" style={{paddingLeft:"15px",paddingRight:"25px"}}>40%</div>
-    <div className="r-text">Listing on marketplaces with 30% of Royalties to holders initially. Our unique royalty system will reward users for hodling for longer periods of time. Also SMB + SDB + (more TBA) hodlers will get additional royalty.</div>
+    <div className="r-text">Listing on marketplaces with 30% of Royalties to holders initially. Our unique royalty system will reward users for hodling for longer periods of time. Also SMB + Doge Capital + (more TBA) hodlers will get additional royalty.</div>
   </div>  
 
   <div className="r-p-container">
@@ -491,7 +569,7 @@ We’ve set up some goalposts for ourselves. Once we hit a target sell through p
   <div className="r-t-container" style={{paddingLeft:"3vw",paddingTop:"5vw",paddingRight:"3vw"}}>
   
     <div className="r-text">1. Start working on Breeding and gamification.<br/></div>
-    <div className="r-text">2. Staking : Stake your SDB NFTs to earn $DOGFOOD token. This token will be backed by the assets in the WoofBank . Each $DOGFOOD token represent a share in the WoofBank, this creates a floor price for the $DOGFOOD token. Apart from representing a share in Woofbank , $DOGFOOD tokens will also have other utilities in the SDB ecosystem like breeding , future drop access, payment for SDB exclusive merch etc </div>
+    <div className="r-text">2. Staking : Stake your Doge Capital NFTs to earn $DOGFOOD token. This token will be backed by the assets in the WoofBank . Each $DOGFOOD token represent a share in the WoofBank, this creates a floor price for the $DOGFOOD token. Apart from representing a share in Woofbank , $DOGFOOD tokens will also have other utilities in the Doge Capital ecosystem like breeding , future drop access, payment for Doge Capital exclusive merch etc </div>
     <div className="r-text">3. Airdrops with actual utility and game theory.</div>
     <div className="r-text">4. Treasure Hunt with a grand prize for the first ones to solve it + more</div>
    
@@ -547,11 +625,11 @@ We’ve set up some goalposts for ourselves. Once we hit a target sell through p
     <div className="footer-logo">
     </div>
   </div>
-  <div className="footer-text">© 2021 Solana Doge Business. All rights reserved.</div>
+  <div className="footer-text">© 2021 Doge Capital. All rights reserved.</div>
 </div>
 
 <div className="socials">
-    <a href="https://twitter.com/SolanaDBS">
+    <a href="https://twitter.com/thedogecapital">
     <div className="twitter-footer-logo">
     </div>
     </a>    
@@ -636,7 +714,7 @@ We’ve set up some goalposts for ourselves. Once we hit a target sell through p
                           const renderCounter = ({days, hours, minutes, seconds, completed}: any) => {
   return (
                           <CounterText>
-                            {hours} hours, {minutes} minutes, {seconds} seconds
+                           {days} days {hours} hours, {minutes} minutes, {seconds} seconds
                           </CounterText>
                           );
 };

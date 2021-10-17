@@ -9,11 +9,10 @@ a{
 
 }
 
- .mint-btn.disabled{
+ /* .mint-btn.disabled{
   pointer-events: none;
  
-} 
-
+}  */
 
 
 .App {
@@ -49,25 +48,18 @@ a{
 
 }
 
-.hamburger{
-  filter: invert(100%) sepia(12%) saturate(7430%) hue-rotate(199deg) brightness(113%) contrast(115%);
-  background-size: contain;
-  width: 60px;
-  margin-top: 12%;
-  background-repeat: no-repeat;
-  background-image: url('menu.svg');
-  display: none;
-}
+
 #sname{
 
     align-self: center;
     flex-grow: 2;
-    zoom: 0.7;
+    margin-top: 10px;
+    zoom: 1.3;
     background-size: contain;
     height: 100px;
     background-position: 0px;
     background-repeat: no-repeat;
-    background-image: url('logo-h.jpeg');
+    background-image: url('logo-h.png');
 }
 
 #connect-top{
@@ -88,6 +80,8 @@ a{
   font-family: system-ui;
   flex-grow: 2;
 }
+
+
 #right-menu{
   display: flex;
   flex-grow: 1;
@@ -204,6 +198,7 @@ a{
 
 
 .mint-heading{
+  text-align: center;
   color: black;
   letter-spacing: -0.025em;
   font-weight: 800;
@@ -297,12 +292,13 @@ a{
 
 
 .footer-logo{
-  background-size: contain;
-  height: 50px;
+  background-size: cover;
+  height: 41px;
+  margin-top: 10px;
   width: 100px;
   background-position: 0px;
   background-repeat: no-repeat;
-  background-image: url('logo-h.jpeg');
+  background-image: url('logo-h.png');
 }
 
 .discord-footer-logo{
@@ -398,8 +394,8 @@ a{
   font-family: system-ui;
 }
 .mint-container{
-  display: flex;
-  flex-direction: column;
+  padding-left: 8vw;
+  width: 30vw;
 }
 
 .body-container-r{
@@ -731,7 +727,7 @@ flex-shrink: 1.2;
 
   .mint-container{
 
-    align-self: center;
+    width:75vw;
 
   }
 
