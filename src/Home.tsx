@@ -334,7 +334,7 @@ console.log(error);
 Welcome Woofers !!
 </h1>
 <p className="main-subheading">
-Solana Doge Business is a collection of 5000 cute 2x24 pixel art collection on the Solana Blockchain. Holding a Doge Capital grants membership to the Woof Club and owner exclusive perks. Monkeys and Apes have been having fun for too long so we have decided to join them. Woof!
+Solana Doge Business is a collection of 5000 cute 24x24 pixel art collection on the Solana Blockchain. Holding a Doge Capital grants membership to the Woof Club and owner exclusive perks. Monkeys and Apes have been having fun for too long so we have decided to join them. Woof!
 </p>
 
 <Button id="twitter" href="https://twitter.com/thedogecapital" style={{background:"black",marginTop:"10px",marginBottom:"10px",marginRight:"10px",marginLeft:"10px",fontSize: "1.1rem",color:"white",fontStyle: "italic",
