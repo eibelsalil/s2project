@@ -363,7 +363,7 @@ Solana Doge Business is a collection of 5000 cute 24x24 pixel art collection on 
 <MintContainer className="mint-btn disabled" style={{
     alignSelf: "center",display:"grid"}}>
   
-  <div style={{marginLeft:"1vw"}}>
+  <div style={{marginLeft:"0vw"}}>
   <ReCAPTCHA 
     sitekey={process.env.REACT_APP_CAPTCHA_KEY!}
     onChange={onChange}
@@ -374,7 +374,7 @@ Solana Doge Business is a collection of 5000 cute 24x24 pixel art collection on 
           <ConnectButton id="connect-mint" style={{ color: "white",
             background:"black",fontSize: "1.1rem",fontStyle: "italic",
             lineHeight: "1",
-            fontFamily: "Montserrat,sans-serif",marginRight:"5vw",marginLeft:"7vw"}}>Connect Wallet</ConnectButton>
+            fontFamily: "Montserrat,sans-serif",marginRight:"5vw",paddingLeft:"5vw"}}>Connect Wallet</ConnectButton>
         ) : (
          
           <MintButton
