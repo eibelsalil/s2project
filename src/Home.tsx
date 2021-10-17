@@ -363,10 +363,12 @@ Solana Doge Business is a collection of 5000 cute 24x24 pixel art collection on 
 <MintContainer className="mint-btn disabled" style={{
     alignSelf: "center",display:"grid"}}>
   
-  <ReCAPTCHA
+  <div style={{marginLeft:"1vw"}}>
+  <ReCAPTCHA 
     sitekey={process.env.REACT_APP_CAPTCHA_KEY!}
     onChange={onChange}
   />
+  </div>
 
         {!wallet ? (
           <ConnectButton id="connect-mint" style={{ color: "white",
