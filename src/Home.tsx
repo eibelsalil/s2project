@@ -356,7 +356,7 @@ Doge Capital is a collection of 5000 cute 24x24 pixel art collection on the Sola
 {wallet && (
         <div style={{display:"flex",flexDirection:"column"}}>
         <div className="mint-heading">Mint Price : 1 SOL</div>  
-        <div className="mint-heading" style={{fontSize:"1rem",alignSelf:"center",marginTop:"5vw",marginBottom:"5vw"}}>Items Available: {itemsRemaining} / {itemsAvailable}</div>
+        <div className="mint-heading" style={{fontSize:"1rem",alignSelf:"center",marginTop:"5vw",marginBottom:"5vw"}}>Items Available: {itemsRemaining} / {itemsAvailable} </div>
         </div>
       )}
 
@@ -383,7 +383,7 @@ Doge Capital is a collection of 5000 cute 24x24 pixel art collection on the Sola
             variant="contained"
           style={{fontStyle: "italic",
             lineHeight: "1",
-            fontFamily: "Montserrat,sans-serif",background:"black",color:"white",marginTop:"2vw"}}>
+            fontFamily: "Montserrat,sans-serif",background:"black",color:"white",marginTop:"2vw",paddingLeft:"3vw"}}>
 
 
             {isSoldOut ? (
