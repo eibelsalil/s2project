@@ -39,7 +39,7 @@ const firebaseConfig = {
   apiKey: process.env.REACT_APP_FB_API,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   projectID: process.env.REACT_APP_PROJECT_ID,
-  // For databases not in the us-central1 location, databaseURL will be of the
+  // For databases not in the us-central1 location, databaseURL will be of th
   // form https://[databaseName].[region].firebasedatabase.app.
   // For example, https://your-database-123.europe-west1.firebasedatabase.app
   databaseURL: process.env.REACT_APP_DATABASE_URL,
