@@ -164,15 +164,15 @@ const Home = (props: HomeProps) => {
                 message: "Mint failed! Please try again!",
                 severity: "error",
               });
-            }
+
            } 
-          else {
-            setAlertState({
-              open: true,
-              message: "You don't have anymore presale mints left",
-              severity: "error",
-            });
-          }
+          // else {
+          //   setAlertState({
+          //     open: true,
+          //     message: "You don't have anymore presale mints left",
+          //     severity: "error",
+          //   });
+          // }
         // }
       //    else {
       //     setAlertState({
@@ -181,13 +181,13 @@ const Home = (props: HomeProps) => {
       //       severity: "error",
       //     });
       //   }
-      // } else {
-      //   setAlertState({
-      //     open: true,
-      //     message: "Please complete captcha to mint",
-      //     severity: "error",
-      //   });
-      // }
+      } else {
+        setAlertState({
+          open: true,
+          message: "Please complete captcha to mint",
+          severity: "error",
+        });
+      }
     } catch (error: any) {
       console.log(error);
 
