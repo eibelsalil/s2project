@@ -443,7 +443,7 @@ const Home = (props: HomeProps) => {
                   ) : (
                     <MintButton
                       onClick={onMint}
-                      disabled={isSoldOut || isMinting || !isActive}
+                      disabled={isSoldOut || isMinting || isActive}
                       variant="contained"
                       style={{
                         fontStyle: "italic",
