@@ -628,10 +628,7 @@ const Home = (props: HomeProps) => {
                     40%
                   </div>
                   <div className="r-text">
-                    Listing on marketplaces with 30% of Royalties to holders
-                    initially. Our unique royalty system will reward users for
-                    hodling for longer periods of time. Also SMB + Doge Capital
-                    + (more TBA) hodlers will get additional royalty.
+                    WoofBank formation. 70% of royalties contributed to the WoofBank.
                   </div>
                 </div>
 
