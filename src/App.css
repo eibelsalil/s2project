@@ -197,7 +197,7 @@ a{
  
 } 
 
-@media screen and (max-width: 429px) {
+@media screen and (max-width: 1900px) {
 
   .menu-content{
     padding-left: 29%;
@@ -228,7 +228,7 @@ a{
 
   .gal_img{
     padding:20px;
-    height: 200px
+    height: 70vw;
   }
 
   .who_img{
