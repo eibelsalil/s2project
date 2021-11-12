@@ -23,6 +23,11 @@
   border-radius: 20px;
 }
 
+.ico_img{
+  height: 160px;
+  border-radius: 20px;
+}
+
 .f_img{
   height: 23vw;
 }
@@ -125,6 +130,8 @@ justify-content: end;
 .main-title{
 
 color: white;
+width:"58vw";
+height:"40vw";
 
 }
 
@@ -158,6 +165,10 @@ color: white;
 
 }
 
+.menu-content{
+  padding-left: 29%;
+}
+
 
 
 /* --------------------------------------------------------------------------------- */
@@ -186,3 +197,61 @@ a{
  
 } 
 
+@media screen and (max-width: 429px) {
+
+ 
+
+  .main-bg{
+    display: none;
+  }
+
+  .gallery{
+    flex-direction: column;
+  }
+
+  .header{
+    height: 100vw;
+  }
+
+  .main-title{
+    position: relative;
+    left:20px;
+    width: 83vw;
+    height: 80vw;
+  }
+
+  .main_social{
+    margin-top: 20px;
+  }
+
+  .gal_img{
+    padding:20px;
+    height: 200px
+  }
+
+  .who_img{
+    height: 0px;
+  }
+
+  .who_gallery{
+    height: 50px;
+    flex-direction: column;
+    padding-top: 100px;
+
+  }
+
+.team_gallery{
+  padding-left: 25%;
+  flex-direction: column;
+}
+
+.f_img{
+  height: 80vw;
+}
+
+.menu-li{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+}

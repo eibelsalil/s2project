@@ -283,7 +283,7 @@ const Home = (props: HomeProps) => {
 
           <div className="main-menu">
 
-            <div className="menu-content" style={{paddingLeft: "4%"}}>
+            <div className="menu-content">
 
 <div className="menu-cc">
 <div className="menu-li title"><a href="#roadmap" style={{fontSize:"1em"}}>Roadmap</a></div>
@@ -321,7 +321,7 @@ const Home = (props: HomeProps) => {
             </MintContainer>
             </div>
             </div>
-            <div className="main-title" style={{backgroundImage:`url(${title})`,width:"58vw",height:"40vw",backgroundSize:"cover",backgroundPosition:"center"}}>
+            <div className="main-title" style={{backgroundImage:`url(${title})`,backgroundSize:"cover",backgroundPosition:"center"}}>
             </div>
 
     </div>
@@ -456,7 +456,7 @@ width: "50px"}}></div></a>
       <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%",marginTop:"5%"}}>WHO ARE THE COOL ALIENS?</div>
       <div className="desc" style={{lineHeight:"1.4",fontSize: "1.3em",alignSelf: "center",marginBottom: "10%"}}>THEY ARE A BUNCH OF HOOLIGAN ALIENS FROM PLANET ZAJA THAT CRASH LANDED INTO EARTH WHILE THEY WERE ROAMING AROUND THE GALAXY.
 THEY QUICKLY ADAPTED TO THE HUMAN HOOLIGAN LIFESTYLE OF EARTH AND HAVE BEEN CHILLING WITH HUMANS EVER SINCE. BUT COOL ALIENS BEING WHO THEY ARE, QUICKLY GOT BORED OF EARTH AND IS TRYING TO FIX THEIR SHIP AND GO BACK HOME TO THEIR FEMALES.</div>
-      <div className="gallery" style={{display:"flex",justifyContent: "space-around",height:"150px"}}>
+      <div className="who_gallery" style={{display:"flex",justifyContent: "space-around",height:"150px"}}>
           <img className="who_img" src={alienw}/>
           <img className="who_img" src={alienw}/>
           <img className="who_img" src={alienw}/>
@@ -483,7 +483,7 @@ THEY QUICKLY ADAPTED TO THE HUMAN HOOLIGAN LIFESTYLE OF EARTH AND HAVE BEEN CHIL
   <div className="main-section" id="roadmap">
 
      <div style={{display:"flex"}}> 
-      <img className="gal_img" src={ralien} style={{height:"70px"}}/>
+      <img className="ico_img" src={ralien} style={{height:"70px"}}/>
       <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%"}}>Roadmap</div>
      </div> 
       <div style={{display:"flex"}}>
@@ -494,7 +494,7 @@ THEY QUICKLY ADAPTED TO THE HUMAN HOOLIGAN LIFESTYLE OF EARTH AND HAVE BEEN CHIL
 
   <div className="main-section" id="features" style={{paddingTop: "5%"}}>
   <div style={{display:"flex"}}> 
-      <img className="gal_img" src={fss} style={{height:"70px"}}/>
+      <img className="ico_img" src={fss} style={{height:"70px"}}/>
       <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%"}}>Key Features</div>     
   </div>
 
@@ -519,7 +519,7 @@ THEY QUICKLY ADAPTED TO THE HUMAN HOOLIGAN LIFESTYLE OF EARTH AND HAVE BEEN CHIL
 
   <div className="main-section" id="team">
       <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%"}}>Team</div>
-      <div className="gallery" style={{display:"flex",justifyContent: "space-around",marginBottom:"100px"}}>
+      <div className="team_gallery" style={{display:"flex",justifyContent: "space-around",marginBottom:"100px"}}>
           <div><img className="team_img" src={ccg1}/><div style={{justifyContent:"center",fontFamily: "Days One , sans-serif",paddingTop:"20px"}}>Daddyalien(Developer)</div></div>
           <div><img className="team_img" src={ccg2}/><div style={{justifyContent:"center",fontFamily: "Days One , sans-serif",paddingTop:"20px"}}>metadavinci(Artist)</div></div>
           <div><img className="team_img" src={ccg3}/><div style={{justifyContent:"center",fontFamily: "Days One , sans-serif",paddingTop:"20px"}}>Metabodivan(Marketing)</div></div>
