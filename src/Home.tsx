@@ -440,8 +440,8 @@ width: "50px"}}></div></a>
 
 
   <div className="main-section" id="cool_alien">
-      <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%",marginTop:"5%"}}>COOL ALIEN COLLECTION</div>
-      <div className="desc" style={{lineHeight:"1.4",fontSize: "1.3em",alignSelf: "center",marginBottom: "10%"}}>COOL ALIENS IS A COLLECTION OF 5000 UNIQUELY GENEREATED 34 X 34 PIXEL ALIENS LIVING ON THE SOLANA BLOCKCHAIN</div>
+      <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%",marginTop:"5%"}}>ALIENVERSE COLLECTION</div>
+      <div className="desc" style={{lineHeight:"1.4",fontSize: "1.3em",alignSelf: "center",marginBottom: "10%"}}>THE ALIEN VERSE IS A COLLECTION OF 5000 UNIQUELY GENEREATED 34 X 34 PIXEL ALIENS LIVING ON THE SOLANA BLOCKCHAIN</div>
       <div className="gallery" style={{display:"flex",justifyContent: "space-around"}}>
           <img className="gal_img" src={ccg1}/>
           <img className="gal_img" src={ccg2}/>
@@ -453,9 +453,9 @@ width: "50px"}}></div></a>
   </div>  
 
   <div className="main-section" id="who_are">
-      <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%",marginTop:"5%"}}>WHO ARE THE COOL ALIENS?</div>
+      <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%",marginTop:"5%"}}>WHO ARE THE ALIENVERSE?</div>
       <div className="desc" style={{lineHeight:"1.4",fontSize: "1.3em",alignSelf: "center",marginBottom: "10%"}}>THEY ARE A BUNCH OF HOOLIGAN ALIENS FROM PLANET ZAJA THAT CRASH LANDED INTO EARTH WHILE THEY WERE ROAMING AROUND THE GALAXY.
-THEY QUICKLY ADAPTED TO THE HUMAN HOOLIGAN LIFESTYLE OF EARTH AND HAVE BEEN CHILLING WITH HUMANS EVER SINCE. BUT COOL ALIENS BEING WHO THEY ARE, QUICKLY GOT BORED OF EARTH AND IS TRYING TO FIX THEIR SHIP AND GO BACK HOME TO THEIR FEMALES.</div>
+THEY QUICKLY ADAPTED TO THE HUMAN HOOLIGAN LIFESTYLE OF EARTH AND HAVE BEEN CHILLING WITH HUMANS EVER SINCE. BUT ALIENVERSE BEING WHO THEY ARE, QUICKLY GOT BORED OF EARTH AND IS TRYING TO FIX THEIR SHIP AND GO BACK HOME TO THEIR FEMALES.</div>
       <div className="who_gallery" style={{display:"flex",justifyContent: "space-around",height:"150px"}}>
           <img className="who_img" src={alienw}/>
           <img className="who_img" src={alienw}/>
