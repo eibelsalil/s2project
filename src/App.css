@@ -130,8 +130,8 @@ justify-content: end;
 .main-title{
 
 color: white;
-width:"58vw";
-height:"40vw";
+width: 58vw;
+height: 40vw;
 
 }
 
@@ -166,7 +166,7 @@ height:"40vw";
 }
 
 .menu-content{
-  padding-left: 29%;
+  padding-left: 3%;
 }
 
 
@@ -199,7 +199,9 @@ a{
 
 @media screen and (max-width: 429px) {
 
- 
+  .menu-content{
+    padding-left: 29%;
+  }
 
   .main-bg{
     display: none;
