@@ -488,7 +488,7 @@ THEY QUICKLY ADAPTED TO THE HUMAN HOOLIGAN LIFESTYLE OF EARTH AND HAVE BEEN CHIL
      </div> 
       <div style={{display:"flex"}}>
       <img className="gal_img" src={roadmap} style={{height:"100%",width:"-webkit-fill-available"}}/>
-      <div id="roadmap"></div>
+      {/* <div id="roadmap"></div> */}
       </div>
   </div> 
 
