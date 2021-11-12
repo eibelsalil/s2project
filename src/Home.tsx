@@ -286,8 +286,8 @@ const Home = (props: HomeProps) => {
             <div className="menu-content" style={{paddingLeft: "4%"}}>
 
 <div className="menu-cc">
-<div className="menu-li title"><a href="#roadmap">Roadmap</a></div>
-<div className="menu-li title"><a href="#team">Team</a></div>
+<div className="menu-li title"><a href="#roadmap" style={{fontSize:"1em"}}>Roadmap</a></div>
+<div className="menu-li title"><a href="#team" style={{fontSize:"1em"}}>Team</a></div>
 
             <MintContainer
               className="main-subheading mint-button"
