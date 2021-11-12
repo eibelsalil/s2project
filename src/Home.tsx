@@ -286,8 +286,8 @@ const Home = (props: HomeProps) => {
             <div className="menu-content" style={{paddingLeft: "4%"}}>
 
 <div className="menu-cc">
-<div className="menu-li title">Roadmap</div>
-<div className="menu-li title">Team</div>
+<div className="menu-li title"><a href="#roadmap">Roadmap</a></div>
+<div className="menu-li title"><a href="#team">Team</a></div>
 
             <MintContainer
               className="main-subheading mint-button"
@@ -480,7 +480,7 @@ THEY QUICKLY ADAPTED TO THE HUMAN HOOLIGAN LIFESTYLE OF EARTH AND HAVE BEEN CHIL
   </div>  */}
 
 
-  <div className="main-section">
+  <div className="main-section" id="roadmap">
 
      <div style={{display:"flex"}}> 
       <img className="gal_img" src={ralien} style={{height:"70px"}}/>
