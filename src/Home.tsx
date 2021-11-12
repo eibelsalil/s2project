@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import "./App.css";
 import Countdown from "react-countdown";
-import { Button, CircularProgress, Snackbar } from "@material-ui/core";
+import { Button, CircularProgress, Hidden, Snackbar } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 
 import * as anchor from "@project-serum/anchor";
@@ -11,6 +11,25 @@ import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
+
+import main from "./ca_main.png";
+import cs from "./cc_cs.png";
+import f1 from "./cc_f1.png";
+import f2 from "./cc_f2.png";
+import f3 from "./cc_f3.png";
+import f4 from "./cc_f4.png";
+import rbg from "./cc_rbg.png";
+import fss from "./cc_fss.png";
+import ralien from "./cc_ralien.png";
+import roadmap from "./cc_roadmap.png";
+import title from "./cc_pew_main.png";
+import alienw from "./cc_alw.png";
+import spaces from "./cc_spship.png";
+import ccg1 from "./cc_g1.png";
+import ccg2 from "./cc_g2.png";
+import ccg3 from "./cc_g3.png";
+import ccg4 from "./cc_g4.png";
+import ccg5 from "./cc_g5.png";
 
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -260,14 +279,15 @@ const Home = (props: HomeProps) => {
         }}
       >
         <div className="header">
-          <div id="sname"></div>
-          <div id="right-menu">
-            <div id="menu-li">
-              <a href="/#roadmap">ROADMAP</a>
-            </div>
-            <div id="menu-li">
-              <a href="/#team">TEAM</a>
-            </div>
+          
+
+          <div className="main-menu">
+
+            <div className="menu-content" style={{paddingLeft: "4%"}}>
+
+<div className="menu-cc">
+<div className="menu-li title">Roadmap</div>
+<div className="menu-li title">Team</div>
 
             <MintContainer
               className="main-subheading mint-button"
@@ -278,12 +298,12 @@ const Home = (props: HomeProps) => {
                   id="connect-top"
                   style={{
                     alignSelf: "center",
-                    color: "black",
-                    background: "yellow",
-                    fontSize: "0.8rem",
-                    fontStyle: "italic",
+                    color: "white",
+                    background: "#37354d",
+                    fontSize: "0.9em",
                     lineHeight: "1",
-                    fontFamily: "Montserrat,sans-serif",
+                    fontFamily: "Days One,sans-serif",
+                    textShadow: "rgb(0 255 255) 0.92924px 0.206878px 0px, rgb(255 0 255) 0.67076px -0.306878px 0px"
                   }}
                 >
                   CONNECT WALLET
@@ -299,101 +319,31 @@ const Home = (props: HomeProps) => {
                 </span>
               )}
             </MintContainer>
-          </div>
-        </div>
+            </div>
+            </div>
+            <div className="main-title" style={{backgroundImage:`url(${title})`,width:"58vw",height:"40vw",backgroundSize:"cover",backgroundPosition:"center"}}>
+            </div>
+
+    </div>
+
+<div className="main-bg" style={{backgroundImage:`url(${main})`}}>
+  
+  <div className="social-icons">
+            <a href="https://discord.gg/EwukvFWb" style={{padding:"27px"}}>
+                  <div className="discord-footer-logo"></div>
+                </a>
+              <a href="https://twitter.com/solanaabs" style={{padding:"10px"}}>
+                  <div className="twitter-footer-logo"></div>
+                </a>
+          </div>  
+          
+  </div>
+</div>
+
 
         <div className="main-section">
-          <div className="main-image-container">
-            <div className="main-image"></div>
-
-            <div className="main-text-container">
-              <div className="main-text-wrap">
-                <h1 className="main-heading" style={{ color: "black" }}>
-                  Welcome Woofers !!
-                </h1>
-                <p className="main-subheading">
-                  Doge Capital is a collection of 5000 cute 24x24 pixel art
-                  collection on the Solana Blockchain. Holding a Doge Capital
-                  grants membership to the Woof Club and owner exclusive perks.
-                  Monkeys and Apes have been having fun for too long so we have
-                  decided to join them. Woof!
-                </p>
-
-                <Button
-                  id="twitter"
-                  href="https://twitter.com/thedogecapital"
-                  style={{
-                    background: "black",
-                    marginTop: "10px",
-                    marginBottom: "10px",
-                    marginRight: "10px",
-                    marginLeft: "10px",
-                    fontSize: "1.1rem",
-                    color: "white",
-                    fontStyle: "italic",
-                    lineHeight: "1",
-                    fontFamily: "Montserrat,sans-serif",
-                    padding: "10px",
-                  }}
-                >
-                  Follow on Twitter
-                </Button>
-                <Button
-                  id="discord"
-                  href="https://discord.gg/xZEvbqFerb"
-                  style={{
-                    background: "black",
-                    margin: "10px",
-                    fontSize: "1.1rem",
-                    color: "white",
-                    fontStyle: "italic",
-                    lineHeight: "1",
-                    fontFamily: "Montserrat,sans-serif",
-                    padding: "10px",
-                  }}
-                >
-                  Join Discord
-                </Button>
-
-                <div
-                  className="main-heading"
-                  style={{
-                    color: "black",
-                    fontSize: "1.5rem",
-                    paddingTop: "6vw",
-                    paddingBottom: "1vw",
-                  }}
-                >
-                  Price: 1 SOL
-                </div>
-                <div
-                  className="main-heading"
-                  style={{
-                    color: "black",
-                    fontSize: "1.5rem",
-                    paddingTop: "1vw",
-                    paddingBottom: "1vw",
-                  }}
-                >
-                  Presale: 18th Oct
-                </div>
-                <div
-                  className="main-heading"
-                  style={{
-                    color: "black",
-                    fontSize: "1.5rem",
-                    paddingTop: "1vw",
-                  }}
-                >
-                  Public Mint: 20th Oct
-                </div>
-              </div>
-
-              <div
-                className="mint-container"
-                style={{ justifyContent: "space-around", marginTop: "7vw" }}
-              >
-                {wallet && (
+{/* 
+        {wallet && (
                   <div style={{ display: "flex", flexDirection: "column" }}>
                     <div className="mint-heading">Mint Price : 1 SOL</div>
                     <div
@@ -408,37 +358,36 @@ const Home = (props: HomeProps) => {
                       Items Available: {itemsRemaining} / {itemsAvailable}{" "}
                     </div>
                   </div>
-                )}
-
-                <MintContainer
+                )} */}
+          
+        <MintContainer
                   className="mint-btn disabled"
                   style={{
-                    alignSelf: "center",
                     display: "grid",
+                    height: "40px"
                   }}
                 >
-                  <div style={{ marginLeft: "0vw" }}>
+                  {/* <div style={{ marginLeft: "0vw" }}>
                     <ReCAPTCHA
                       sitekey={process.env.REACT_APP_CAPTCHA_KEY!}
                       onChange={onChange}
                     />
-                  </div>
+                  </div> */}
 
                   {!wallet ? (
                     <ConnectButton
                       id="connect-mint"
                       style={{
                         color: "white",
-                        background: "black",
-                        fontSize: "1.1rem",
-                        fontStyle: "italic",
+                        background: "#37354d",
+                        fontSize: "2.2em",
                         lineHeight: "1",
-                        fontFamily: "Montserrat,sans-serif",
-                        marginRight: "5vw",
-                        paddingLeft: "5vw",
+                        fontFamily: "Days One,sans-serif",
+                        textShadow: "rgb(0 255 255) 0.92924px 0.206878px 0px, rgb(255 0 255) 0.67076px -0.306878px 0px",
+                        width:"fit-content"                
                       }}
                     >
-                      Connect Wallet
+                      CONNECT
                     </ConnectButton>
                   ) : (
                     <MintButton
@@ -476,362 +425,107 @@ const Home = (props: HomeProps) => {
                     </MintButton>
                   )}
                 </MintContainer>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="main_social">
+    <a href="https://twitter.com/solanaabs" style={{marginTop: "4%"}}>
+      <div className="twtr" style={{backgroundSize: "cover", 
+height: "50px", 
+width: "50px"}}></div></a>
+<a href="https://discord.gg/EwukvFWb" style={{marginTop: "4%"}}>
+      <div className="dscrd" style={{backgroundSize: "cover", 
+height: "50px", 
+width: "50px"}}></div></a>
+      <div className="foltxt">JOIN US ON DISCORD AND TWITTER.</div>
+    </div>
+  </div>  
 
-        <div
-          className="body"
-          style={{
-            height: "-webkit-fill-available",
-            backgroundColor: "rgb(17,24,39)",
-            margin: "0px",
-          }}
-        >
-          <div
-            className="bodysection-container-1"
-            style={{ paddingBottom: "10vw" }}
-          >
-            <div className="body-container-r">
-              <div className="main-heading">WoofDAO</div>
-              <div className="body-subheading">
-                The WoofDAO will allow doge holders to make decisions on what to
-                do with the assets in the Woofbank. Fractionalise? Giveaway?
-                Redeem for Belly Rubs? You name it!
-              </div>
-            </div>
 
-            <div
-              className="body-image-container-1"
-              style={{ width: "-webkit-fill-available" }}
-            >
-              <div className="body-image-1"></div>
-              <div></div>
-            </div>
-          </div>
+  <div className="main-section" id="cool_alien">
+      <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%",marginTop:"5%"}}>COOL ALIEN COLLECTION</div>
+      <div className="desc" style={{lineHeight:"1.4",fontSize: "1.3em",alignSelf: "center",marginBottom: "10%"}}>COOL ALIENS IS A COLLECTION OF 5000 UNIQUELY GENEREATED 34 X 34 PIXEL ALIENS LIVING ON THE SOLANA BLOCKCHAIN</div>
+      <div className="gallery" style={{display:"flex",justifyContent: "space-around"}}>
+          <img className="gal_img" src={ccg1}/>
+          <img className="gal_img" src={ccg2}/>
+          <img className="gal_img" src={ccg3}/>
+          <img className="gal_img" src={ccg4}/>
+          <img className="gal_img" src={ccg5}/>
+      </div>
 
-          <div
-            className="bodysection-container-2"
-            style={{ background: "#fed300", paddingBottom: "10vw" }}
-          >
-            <div className="body-image-container-2">
-              <div className="body-image-2"></div>
-              <div></div>
-            </div>
+  </div>  
 
-            <div className="body-container-l">
-              <div className="main-heading" style={{ color: "black" }}>
-                WoofBank
-              </div>
-              <div className="body-subheading" style={{ color: "black" }}>
-                The Woofbank is a vault where we will buy NFTs and other assets
-                and securely store them for our community. Monkeys, Birds,
-                Villagers, the possibilities are endless. Each Doge holder will
-                truly own these assets!
-              </div>
-            </div>
-          </div>
+  <div className="main-section" id="who_are">
+      <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%",marginTop:"5%"}}>WHO ARE THE COOL ALIENS?</div>
+      <div className="desc" style={{lineHeight:"1.4",fontSize: "1.3em",alignSelf: "center",marginBottom: "10%"}}>THEY ARE A BUNCH OF HOOLIGAN ALIENS FROM PLANET ZAJA THAT CRASH LANDED INTO EARTH WHILE THEY WERE ROAMING AROUND THE GALAXY.
+THEY QUICKLY ADAPTED TO THE HUMAN HOOLIGAN LIFESTYLE OF EARTH AND HAVE BEEN CHILLING WITH HUMANS EVER SINCE. BUT COOL ALIENS BEING WHO THEY ARE, QUICKLY GOT BORED OF EARTH AND IS TRYING TO FIX THEIR SHIP AND GO BACK HOME TO THEIR FEMALES.</div>
+      <div className="gallery" style={{display:"flex",justifyContent: "space-around",height:"150px"}}>
+          <img className="who_img" src={alienw}/>
+          <img className="who_img" src={alienw}/>
+          <img className="who_img" src={alienw}/>
+          <img className="who_img" src={spaces} style={{height: "40vw",position: "relative",bottom: "20vw"}}/>
+      </div>
 
-          <div className="bodysection-container-3">
-            <div className="body-container-royalty">
-              <div className="main-heading">Airdrops</div>
-              <div
-                className="body-subheading"
-                style={{ paddingBottom: "10vw" }}
-              >
-                We will have periodic airdrops that gives fractional ownership of the WoofBank assets. These airdrops would also entitle the holders to additional benefits in the Doge Capital ecosystem.
-              
-              </div>
-            </div>
+  </div> 
 
-            <div
-              className="body-image-container-1"
-              style={{ width: "-webkit-fill-available" }}
-            >
-              <div className="body-image-3"></div>
-              <div></div>
-            </div>
-          </div>
 
-          {/* <div className="bodysection-container-n" style={{paddingBottom:"10vw",paddingTop:"0vw"}}>
+  {/* <div className="main-section" id="join_comm">
+    <div className="join_ico"></div>
+    <div className="text_wrap">
+      <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%"}}>JOIN OUR COMMUNITY</div>
+      <div className="desc" style={{fontSize: "1.8em",alignSelf: "center",marginBottom: "10%"}}>JOIN THE ALIEN COMMUNITY. LEARN HOW TO BECOME OG-ALIEN. ENJOY THE BENEFITS OF ROYALTIES.</div>
+    </div>
+      <div className="gallery" style={{display:"flex",justifyContent: "space-around"}}>
+        <div className="twtr"></div>
+        <div className="dscrd"></div>
+      </div>
 
-<div className="body-image-container-1" style={{width:"-webkit-fill-available"}}>
-<div className="body-image-3"></div> 
-<div></div>
-</div>
+  </div>  */}
 
-<div className="main-heading">Royalties</div>
-<div className="body-subheading">Our unique royalty system will allow hodlers to earn higher royalties on holding for longer periods of time. Also holding other NFTs like a SMB or Thugbird will allow you to earn more royalties. These can be changed by the WoofDAO.</div>
-</div> */}
 
-          <div
-            id="roadmap"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              background: "#fed300",
-              paddingBottom: "10vw",
-            }}
-          >
-            <div className="bodysection-container-n">
-              <div className="main-heading" style={{ color: "black" }}>
-                Roadmap
-              </div>
-              <div className="body-subheading" style={{ color: "black" }}>
-                We’re in this for the long haul. We’ve set up some goalposts for
-                ourselves. Once we hit a target sell through percentage, we will
-                begin to work on realizing the stated goal.
-              </div>
-            </div>
+  <div className="main-section">
 
-            <div className="stage1-heading">Stage 1</div>
+     <div style={{display:"flex"}}> 
+      <img className="gal_img" src={ralien} style={{height:"70px"}}/>
+      <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%"}}>Roadmap</div>
+     </div> 
+      <div style={{display:"flex"}}>
+      <img className="gal_img" src={roadmap} style={{height:"100%",width:"-webkit-fill-available"}}/>
+      <div id="roadmap"></div>
+      </div>
+  </div> 
 
-            <div className="roadmap-container">
-              <div className="p-t-container">
-                <div className="r-p-container">
-                  {/* <tr style={{display: "table",
-    whiteSpace: "nowrap"}}> */}
-                  <div
-                    className="r-percentage"
-                    style={{ paddingLeft: "15px", paddingRight: "25px" }}
-                  >
-                    10%
-                  </div>
-                  <div className="r-text">
-                    Buy Dogfood and feed some streetdogs
-                  </div>
-                </div>
+  <div className="main-section" id="features" style={{paddingTop: "5%"}}>
+  <div style={{display:"flex"}}> 
+      <img className="gal_img" src={fss} style={{height:"70px"}}/>
+      <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%"}}>Key Features</div>     
+  </div>
 
-                {/* <div style={{padding:"20px"}}></div>
-    <div className="r-text">Buy Dogfood and feed some streetdogs</div> */}
-                {/* </tr>   */}
+  <div className="gallery" style={{display:"flex",justifyContent: "space-around"}}>
+          <img className="f_img" src={f1}/>
+          <img className="f_img" src={f2}/>
+          <img className="f_img" src={f3}/>
+          <img className="f_img" src={f4}/>
+      </div>
+      {/* <div className="gallery" style={{display:"flex",justifyContent: "space-around",marginTop:"5%",paddingLeft:"15%",paddingRight:"15%"}}>
+          <img className="f_img" src={f1}/>
+          <img className="f_img" src={f2}/>
+      </div> */}
+  
+  </div> 
 
-                <div className="r-p-container">
-                  <div
-                    className="r-percentage"
-                    style={{ paddingLeft: "15px", paddingRight: "25px" }}
-                  >
-                    20%
-                  </div>
-                  <div className="r-text">
-                    We release the Chained Dogs - 10 Doges will be randomly
-                    airdropped to Doge Capital holders
-                  </div>
-                </div>
+  <div className="main-section" id="3Dcollection" style={{paddingTop: "10%"}}>
+      <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%"}}>3D Collection</div>
+      <div className="desc" style={{fontSize: "1.8em",alignSelf: "center",marginBottom: "10%"}}>coming soon</div>
 
-                <div className="r-p-container">
-                  <div
-                    className="r-percentage"
-                    style={{ paddingLeft: "15px", paddingRight: "25px" }}
-                  >
-                    40%
-                  </div>
-                  <div className="r-text">
-                    WoofBank formation. 70% of royalties contributed to the WoofBank.
-                  </div>
-                </div>
+  </div> 
 
-                <div className="r-p-container">
-                  <div
-                    className="r-percentage"
-                    style={{ paddingLeft: "15px", paddingRight: "25px" }}
-                  >
-                    50%
-                  </div>
-                  <div className="r-text">
-                    member exclusive merch drop. Designs are already ready.
-                  </div>
-                </div>
+  <div className="main-section" id="team">
+      <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%"}}>Team</div>
+      <div className="gallery" style={{display:"flex",justifyContent: "space-around",marginBottom:"100px"}}>
+          <div><img className="team_img" src={ccg1}/><div style={{justifyContent:"center",fontFamily: "Days One , sans-serif",paddingTop:"20px"}}>Daddyalien(Developer)</div></div>
+          <div><img className="team_img" src={ccg2}/><div style={{justifyContent:"center",fontFamily: "Days One , sans-serif",paddingTop:"20px"}}>metadavinci(Artist)</div></div>
+          <div><img className="team_img" src={ccg3}/><div style={{justifyContent:"center",fontFamily: "Days One , sans-serif",paddingTop:"20px"}}>Metabodivan(Marketing)</div></div>
+      </div>
 
-                <div className="r-p-container">
-                  <div
-                    className="r-percentage"
-                    style={{ paddingLeft: "15px", paddingRight: "25px" }}
-                  >
-                    70%
-                  </div>
-                  <div className="r-text">
-                    WoofDAO formation. 1 doge = 1 vote
-                  </div>
-                </div>
-
-                <div className="r-p-container">
-                  <div
-                    className="r-percentage"
-                    style={{ paddingLeft: "15px", paddingRight: "25px" }}
-                  >
-                    90%
-                  </div>
-                  <div className="r-text">
-                    Use 5% of sale to buy floor doges. Then let WoofDAO decide
-                    what to do with them. For eg:burn them to make the
-                    collection deflationary or start a liquidity pool to
-                    stabilise price
-                  </div>
-                </div>
-
-                <div className="r-p-container">
-                  <div
-                    className="r-percentage"
-                    style={{ paddingLeft: "15px", paddingRight: "15px" }}
-                  >
-                    100%
-                  </div>
-                  <div className="r-text">
-                    We will buy a Floor SMB + Thugbird (+ more TBA) and let
-                    WoofDAO decide what to do with it. For eg, fractionalise it
-                    or do a single giveaway or hold. This will be the beginning
-                    of the WoofBank. 5% of initial sales will be added to the
-                    Woof bank as well.
-                  </div>
-                </div>
-              </div>
-
-              <div className="r-i-container">
-                <div className="r-image"></div>
-              </div>
-            </div>
-
-            <div className="stage1-heading">Stage 2</div>
-            <div
-              className="r-t-container"
-              style={{
-                paddingLeft: "3vw",
-                paddingTop: "5vw",
-                paddingRight: "3vw",
-              }}
-            >
-              <div className="r-text">
-                1. Start working on Breeding and gamification.
-                <br />
-              </div>
-              <div className="r-text">
-                2. Staking : Stake your Doge Capital NFTs to earn $DOGFOOD
-                token. This token will be backed by the assets in the WoofBank .
-                Each $DOGFOOD token represent a share in the WoofBank, this
-                creates a floor price for the $DOGFOOD token. Apart from
-                representing a share in Woofbank , $DOGFOOD tokens will also
-                have other utilities in the Doge Capital ecosystem like breeding
-                , future drop access, payment for Doge Capital exclusive merch
-                etc{" "}
-              </div>
-              <div className="r-text">
-                3. Airdrops with actual utility and game theory.
-              </div>
-              <div className="r-text">
-                4. Treasure Hunt with a grand prize for the first ones to solve
-                it + more
-              </div>
-            </div>
-
-            <div className="r-i-container-ipad">
-              <div className="r-image"></div>
-            </div>
-          </div>
-
-          <div id="team" className="bodysection-container">
-            <div className="main-heading">Team</div>
-          </div>
-          <div className="team-container">
-            <div className="team">
-              <div className="t1-img"></div>
-              <div className="t-name">Cryptofunnel</div>
-              <div className="t-desc">Lead Developer</div>
-              <div className="t-soc">
-                <a href="https://twitter.com/thecryptofunnel">
-                  <div className="t-twitter"></div>
-                </a>
-                <a href="https://instagram.com/cryptofunnel">
-                  <div className="t-insta"></div>
-                </a>
-              </div>
-            </div>
-            <div className="team">
-              <div className="t2-img"></div>
-              <div className="t-name">Cryptohike</div>
-              <div className="t-desc">Marketing Head</div>
-              <div className="t-soc">
-                <a href="https://twitter.com/thecryptohike">
-                  <div className="t-twitter"></div>
-                </a>
-                <a href="https://instagram.com/cryptohike">
-                  <div className="t-insta"></div>
-                </a>
-              </div>
-            </div>
-            <div className="team">
-              <div className="t3-img"></div>
-              <div className="t-name">Thiccdoge</div>
-              <div className="t-desc">Artist</div>
-              <div className="t-soc">
-                <a href="https://twitter.com/thethicdoge">
-                  <div className="t-twitter"></div>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div style={{ background: "black" }}>
-            <div className="footer-container">
-              <div>
-                <div>
-                  <div className="footer-logo"></div>
-                </div>
-                <div className="footer-text">
-                  © 2021 Doge Capital. All rights reserved.
-                </div>
-              </div>
-
-              <div className="socials">
-                <a href="https://twitter.com/thedogecapital">
-                  <div className="twitter-footer-logo"></div>
-                </a>
-                <a href="https://discord.gg/7qaAx5UQbb">
-                  <div className="discord-footer-logo"></div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* 
-
-      {wallet && (
-        <p>Balance: {(balance || 0).toLocaleString()} SOL</p>
-      )}
-
-      */}
-
-        {/* 
-      <MintContainer>
-        {!wallet ? (
-          <ConnectButton>Connect Wallet</ConnectButton>
-        ) : (
-          <MintButton
-            disabled={isSoldOut || isMinting || !isActive}
-            onClick={onMint}
-            variant="contained"
-          >
-            {isSoldOut ? (
-              "SOLD OUT"
-            ) : isActive ? (
-              isMinting ? (
-                <CircularProgress />
-              ) : (
-                "MINT"
-              )
-            ) : (
-              <Countdown
-                date={startDate}
-                onMount={({ completed }) => completed && setIsActive(true)}
-                onComplete={() => setIsActive(true)}
-                renderer={renderCounter}
-              />
-            )}
-          </MintButton>
-        )}
-      </MintContainer> */}
+  </div>  
 
         <Snackbar
           open={alertState.open}
