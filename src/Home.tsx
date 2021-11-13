@@ -332,7 +332,7 @@ const Home = (props: HomeProps) => {
             <a href="https://discord.gg/EwukvFWb" style={{padding:"27px"}}>
                   <div className="discord-footer-logo"></div>
                 </a>
-              <a href="https://twitter.com/solanaabs" style={{padding:"10px"}}>
+              <a href="https://twitter.com/wearealienverse" style={{padding:"10px"}}>
                   <div className="twitter-footer-logo"></div>
                 </a>
           </div>  
@@ -426,7 +426,7 @@ const Home = (props: HomeProps) => {
                   )}
                 </MintContainer>
     <div className="main_social">
-    <a href="https://twitter.com/solanaabs" style={{marginTop: "4%"}}>
+    <a href="https://twitter.com/wearealienverse" style={{marginTop: "4%"}}>
       <div className="twtr" style={{backgroundSize: "cover", 
 height: "50px", 
 width: "50px"}}></div></a>
@@ -453,7 +453,7 @@ width: "50px"}}></div></a>
   </div>  
 
   <div className="main-section" id="who_are">
-      <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%",marginTop:"5%"}}>WHO ARE THE ALIENVERSE?</div>
+      <div className="title" style={{fontSize: "3em",alignSelf: "center",marginBottom: "10%",marginTop:"5%"}}>WHO ARE THE ALIENS?</div>
       <div className="desc" style={{lineHeight:"1.4",fontSize: "1.3em",alignSelf: "center",marginBottom: "10%"}}>THEY ARE A BUNCH OF HOOLIGAN ALIENS FROM PLANET ZAJA THAT CRASH LANDED INTO EARTH WHILE THEY WERE ROAMING AROUND THE GALAXY.
 THEY QUICKLY ADAPTED TO THE HUMAN HOOLIGAN LIFESTYLE OF EARTH AND HAVE BEEN CHILLING WITH HUMANS EVER SINCE. BUT ALIENVERSE BEING WHO THEY ARE, QUICKLY GOT BORED OF EARTH AND IS TRYING TO FIX THEIR SHIP AND GO BACK HOME TO THEIR FEMALES.</div>
       <div className="who_gallery" style={{display:"flex",justifyContent: "space-around",height:"150px"}}>
